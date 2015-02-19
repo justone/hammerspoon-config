@@ -1,11 +1,10 @@
--- Application launcher.  Example config:
+-- Application/command launcher.  Example config:
 --
 -- config.launcher = {
 --     mash = {"cmd", "ctrl"},
---     apps = {
---         { key = "T", application = "Terminal" },
---         { key = "C", application = "iTerm" },
+--     bindings = {
 --         { key = "B", application = "Google Chrome" }
+--         { key = "X", commmand = "/usr/bin/rsync ..." }
 --     }
 -- }
 
@@ -19,12 +18,18 @@ local function init_module()
         return
     end
 
-    for _, app in ipairs(config.launcher.apps) do
+    for _, app in ipairs(config.launcher.bindings) do
         if app.key == nil then
             error("Application is missing a key value.")
         end
 
-        hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() application.launchOrFocus(app.application) end)
+        if app.application ~= nil then
+            hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() application.launchOrFocus(app.application) end)
+        end
+
+        if app.command ~= nil then
+            hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() os.execute(app.command) end)
+        end
     end
 end
 
