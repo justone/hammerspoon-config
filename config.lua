@@ -1,6 +1,11 @@
 local config = {}
 
+-- no animation of window moving, please
+hs.window.animationDuration = 0
+
 config.modules = {
+    "launcher",
+    "mgrid",
     "arrangement",
     "monitors",
     "repl",
@@ -14,6 +19,16 @@ config.modules = {
 config.monitors = {
     autodiscover = true,
     rows = 1
+}
+
+-- Launch applications
+config.launcher = {
+    mash = {"cmd", "ctrl"},
+    apps = {
+        { key = "T", application = "Terminal" },
+        { key = "C", application = "iTerm" },
+        { key = "B", application = "Google Chrome" }
+    }
 }
 
 -- Window arrangements.
