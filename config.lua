@@ -29,7 +29,8 @@ config.launcher = {
         { key = "C", application = "iTerm" },
         { key = "B", application = "Google Chrome" },
         { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
-        { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" }
+        { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
+        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" }
     }
 }
 
