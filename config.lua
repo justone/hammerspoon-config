@@ -30,7 +30,7 @@ config.launcher = {
         { key = "B", application = "Google Chrome" },
         { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
         { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
-        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" }
+        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" }
     }
 }
 
