@@ -15,6 +15,14 @@ config.modules = {
     "fullscreen"
 }
 
+mash_keys = {"cmd", "ctrl"}
+
+-- Maps monitor id -> screen index.
+config.fullscreen = {
+    mash = mash_keys,
+    key = "Z"
+}
+
 -- Maps monitor id -> screen index.
 config.monitors = {
     autodiscover = true,
@@ -23,13 +31,14 @@ config.monitors = {
 
 -- Launch applications
 config.launcher = {
-    mash = {"cmd", "ctrl"},
+    mash = mash_keys,
     bindings = {
         { key = "T", application = "Terminal" },
         { key = "C", application = "iTerm" },
         { key = "B", application = "Google Chrome" },
         { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
-        { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" }
+        { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
+        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" }
     }
 }
 

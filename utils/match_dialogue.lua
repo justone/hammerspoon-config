@@ -1,5 +1,5 @@
 local fnutils = require 'hs.fnutils'
-local utf8 = require 'hs.utf8_53'
+local utf8 = require 'hs.utf8'
 
 local fuzzy_matcher = import('utils/matchers/fuzzy')
 local contains_matcher = import('utils/matchers/contains')
