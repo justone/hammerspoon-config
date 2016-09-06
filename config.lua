@@ -2,6 +2,8 @@ local config = {}
 
 -- no animation of window moving, please
 hs.window.animationDuration = 0
+local application = require 'hs.application'
+local eventtap = require 'hs.eventtap'
 
 config.modules = {
     "launcher",
@@ -29,6 +31,16 @@ config.monitors = {
     rows = 1
 }
 
+function switchit()
+    application.launchOrFocus("Google Chrome")
+    -- eventtap.keyStroke({"cmd", "shift"}, "M")
+    eventtap.keyStroke({"cmd"}, "L")
+    eventtap.keyStroke({}, "h")
+    eventtap.keyStroke(hs.keycodes.map['down'])
+    eventtap.keyStroke(hs.keycodes.map['down'])
+    eventtap.keyStroke(hs.keycodes.map['down'])
+end
+
 -- Launch applications
 config.launcher = {
     mash = mash_keys,
@@ -41,7 +53,8 @@ config.launcher = {
         { key = "W", application = "Video" },
         { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
         { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
-        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" }
+        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" },
+        { key = "Q", func = switchit }
     }
 }
 

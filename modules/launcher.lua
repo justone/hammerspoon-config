@@ -30,6 +30,10 @@ local function init_module()
         if app.command ~= nil then
             hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() os.execute(app.command) end)
         end
+
+        if app.func ~= nil then
+            hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() app.func() end)
+        end
     end
 end
 
