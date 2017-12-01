@@ -3,7 +3,7 @@ local window = require 'hs.window'
 
 local function module_init()
     local mash = config:get('fullscreen.mash', { "cmd", "ctrl" })
-    local key = config:get('fullscreen.key', "A")
+    local key = config:get('fullscreen.key', "z")
 
     hotkey.bind(mash, key, function()
         local win = window.focusedWindow()

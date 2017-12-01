@@ -29,7 +29,7 @@ end
 local function init_module()
     local mash = {"cmd", "ctrl"}
 
-    hotkey.bind(mash, 'A', grid.maximizeWindow)
+    -- hotkey.bind(mash, 'M', grid.maximizeWindow)
 
     hotkey.bind(mash, 'N', grid.pushWindowNextScreen)
     hotkey.bind(mash, 'P', grid.pushWindowPrevScreen)
