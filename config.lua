@@ -34,7 +34,7 @@ config.launcher = {
     mash = mash_keys,
     bindings = {
         { key = "T", application = "Terminal" },
-        { key = "C", application = "iTerm" },
+        { key = "C", application = "Slack" },
         { key = "B", application = "Google Chrome" },
         { key = "E", application = "MacVim" },
         { key = "M", application = "OWA" },
