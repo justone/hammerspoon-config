@@ -24,7 +24,19 @@ local function init_module()
         end
 
         if app.application ~= nil then
-            hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function() application.launchOrFocus(app.application) end)
+          hotkey.bind(config.launcher.mash or { "cmd", "ctrl", "alt" }, app.key, function()
+                        local target = hs.application.find(app.application)
+                        if target == nil and app.hide ~= nil then
+                          target = hs.application.find(app.hide)
+                        end
+                        print(app.application)
+                        print(target)
+                        if  target ~= nil and target:isFrontmost() then
+                            target:hide()
+                        else
+                          application.launchOrFocus(app.application)
+                        end
+          end)
         end
 
         if app.command ~= nil then
