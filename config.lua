@@ -48,9 +48,10 @@ config.launcher = {
       { key = "V", application = "IntelliJ IDEA" },
       -- { key = 'M', application = "/usr/local/Cellar/emacs-plus/25.3/Emacs.app" },
       { key = 'M', application = "Emacs" },
-      { key = 'S', application = "Dictionary", hide = "词典" },
+      -- { key = 'S', application = "Dictionary", hide = "词典" },
       { key = 'F', application = "Finder" },
       { key = 'L', application = "Foxmail" },
+      { key = 'S', application = 'Dash'},
       { key = 'X', application = "网易有道词典"}
       -- { key = "V", application = "MacVim" },
       -- { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
