@@ -41,6 +41,7 @@ config.launcher = {
       -- { key = "E", application = "Terminal" },
       { key = "E", application = "iTerm" },
       { key = "Q", application = "QQ" },
+      { key = "W", application = "WeChat" },
       -- { key = "T", application = "iTerm" },
       { key = "C", application = "Google Chrome" },
       { key = "D", application = "DingTalk", hide= '钉钉' },
@@ -52,7 +53,8 @@ config.launcher = {
       { key = 'F', application = "Finder" },
       { key = 'L', application = "Foxmail" },
       { key = 'S', application = 'Dash'},
-      { key = 'X', application = "网易有道词典"}
+      { key = 'X', application = "网易有道词典"},
+      { key = 'A', application = "Screenshot"}
       -- { key = "V", application = "MacVim" },
       -- { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
       -- { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
