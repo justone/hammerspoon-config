@@ -80,3 +80,47 @@ end):start()
 hs.urlevent.bind("someAlert", function(eventName, params)
     hs.alert.show("Received someAlert")
 end)
+
+
+local function do_issw_cmd(arg)
+    hs.execute("/usr/local/bin/issw " .. arg)
+end
+
+-- local function Chinese()
+--   do_issw_cmd("com.sogou.inputmethod.sogou.pinyin")
+-- end
+
+-- local function English()
+--   do_issw_cmd("com.apple.keylayout.US")
+-- end
+
+local function Chinese()
+    -- hs.keycodes.setMethod("Pinyin - Simplified")
+    -- hs.alert.show("switch to chinese ")
+    hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")
+end
+
+local function English()
+    -- hs.keycodes.setLayout("U.S.")
+    -- hs.alert.show("switch to english ")
+    hs.keycodes.currentSourceID("com.apple.keylayout.US")
+end
+
+local function set_app_input_method(app_name, set_input_method_function, event)
+    event = event or hs.window.filter.windowFocused
+
+    hs.window.filter.new(app_name)
+    :subscribe(event, function()
+        set_input_method_function()
+    end)
+end
+
+set_app_input_method('Hammerspoon', English, hs.window.filter.windowCreated)
+set_app_input_method('Spotlight', Chinese, hs.window.filter.windowCreated)
+set_app_input_method('Emacs', English)
+set_app_input_method('iTerm2', English)
+set_app_input_method('Google Chrome', English)
+set_app_input_method('WeChat', Chinese)
+set_app_input_method('钉钉', Chinese)
+-- set_app_input_method('Telegram', Chinese)
+
