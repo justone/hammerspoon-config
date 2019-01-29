@@ -41,7 +41,7 @@ config.launcher = {
       -- { key = "E", application = "Terminal" },
       { key = "E", application = "iTerm" },
       { key = "Q", application = "QQ" },
-      { key = "W", application = "WeChat" },
+      { key = "W", application = "WeChat", hide='微信' },
       -- { key = "T", application = "iTerm" },
       { key = "C", application = "Google Chrome" },
       { key = "D", application = "DingTalk", hide= '钉钉' },
