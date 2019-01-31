@@ -223,14 +223,24 @@ local function disableCtrlBindings()
   end
 end
 
-local ctrlBindingFlag = true
-hs.hotkey.bind({}, 'f12', nil, function()
-    alert.show(ctrlBindingFlag)
-    if ctrlBindingFlag then
-        ctrlBindingFlag = false
-        enableCtrlBindings()
-    else
-        ctrlBindingFlag = true
-        disableCtrlBindings()
-    end
+local wf = hs.window.filter
+-- hs.window.filter.new{'Google Chrome', '微信'}:getWindows()[2]
+-- local hjklBindingApps = wf.new{"Google Chrome", "微信", "钉钉"}
+local hjklBindingApps = wf.new{"Google Chrome", "微信"}
+hjklBindingApps:subscribe(wf.windowFocused, function()
+  enableCtrlBindings()
+end):subscribe(wf.windowUnfocused, function()
+  disableCtrlBindings()
 end)
+
+-- local ctrlBindingFlag = true
+-- hs.hotkey.bind({'ctrl'}, 'f12', nil, function()
+--     alert.show(ctrlBindingFlag)
+--     if ctrlBindingFlag then
+--         ctrlBindingFlag = false
+--         enableCtrlBindings()
+--     else
+--         ctrlBindingFlag = true
+--         disableCtrlBindings()
+--     end
+-- end)

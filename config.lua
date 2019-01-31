@@ -22,6 +22,11 @@ config.modules = {
 
 mash_keys = {"cmd", "ctrl"}
 
+config.hint = {
+    mash = mash_keys,
+    key = "0"
+}
+
 -- Maps monitor id -> screen index.
 config.fullscreen = {
     mash = mash_keys,
@@ -40,7 +45,7 @@ config.launcher = {
    bindings = {
       -- { key = "E", application = "Terminal" },
       { key = "E", application = "iTerm" },
-      { key = "Q", application = "QQ" },
+      -- { key = "Q", application = "QQ" },
       { key = "W", application = "WeChat", hide='微信' },
       -- { key = "T", application = "iTerm" },
       { key = "C", application = "Google Chrome" },
@@ -51,7 +56,7 @@ config.launcher = {
       { key = 'M', application = "Emacs" },
       -- { key = 'S', application = "Dictionary", hide = "词典" },
       { key = 'F', application = "Finder" },
-      { key = 'L', application = "Foxmail" },
+      -- { key = 'L', application = "Foxmail" },
       { key = 'S', application = 'Dash'},
       { key = 'X', application = "网易有道词典"},
       { key = 'A', application = "Screenshot"}
