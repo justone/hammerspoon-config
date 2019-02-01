@@ -116,7 +116,8 @@ local function set_app_input_method(app_name, set_input_method_function, event)
 end
 
 set_app_input_method('Hammerspoon', English, hs.window.filter.windowCreated)
-set_app_input_method('Spotlight', Chinese, hs.window.filter.windowCreated)
+set_app_input_method('聚焦', English, hs.window.filter.windowCreated)
+set_app_input_method('网易有道词典',Chinese)
 set_app_input_method('Emacs', English)
 set_app_input_method('iTerm2', English)
 set_app_input_method('Google Chrome', English)
@@ -163,7 +164,6 @@ set_app_input_method('钉钉', Chinese)
 -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
 -- ctrl + ctrl = escape
 hs.loadSpoon('ControlEscape'):start()
-
 
 -- https://github.com/kkamdooong/hammerspoon-control-hjkl-to-arrow
 -- local function pressFn(mods, oldKey, newKey)
@@ -226,7 +226,7 @@ end
 local wf = hs.window.filter
 -- hs.window.filter.new{'Google Chrome', '微信'}:getWindows()[2]
 -- local hjklBindingApps = wf.new{"Google Chrome", "微信", "钉钉"}
-local hjklBindingApps = wf.new{"Google Chrome", "微信"}
+local hjklBindingApps = wf.new{"Google Chrome", "微信", "访达"}
 hjklBindingApps:subscribe(wf.windowFocused, function()
   enableCtrlBindings()
 end):subscribe(wf.windowUnfocused, function()

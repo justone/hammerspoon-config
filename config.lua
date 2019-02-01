@@ -59,7 +59,8 @@ config.launcher = {
       -- { key = 'L', application = "Foxmail" },
       { key = 'S', application = 'Dash'},
       { key = 'X', application = "网易有道词典"},
-      { key = 'A', application = "Screenshot"}
+      -- performance issue
+      -- { key = 'A', application = "Screenshot"}
       -- { key = "V", application = "MacVim" },
       -- { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
       -- { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
@@ -68,6 +69,10 @@ config.launcher = {
       -- { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" }
    }
 }
+
+hs.hotkey.bind(mash_keys, "A", nil,  function()
+    hs.application.launchOrFocus("screenshot")
+end)
 
 -- Window arrangements.
 config.arrangements = {
