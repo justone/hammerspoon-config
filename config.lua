@@ -5,11 +5,11 @@ hs.window.animationDuration = 0
 
 config.modules = {
    -- "app_selector",
-   "hint",
-   "launcher",
+   -- "hint",
+   -- "launcher",
    "mgrid",
    "aerosnap",
-   "fullscreen",
+   -- "fullscreen",
    -- "slide",
    -- "arrangement",
    -- "monitors",

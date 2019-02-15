@@ -1,4 +1,23 @@
+hs.loadSpoon("WinWin")
+hs.loadSpoon("WindowGrid")
+hs.loadSpoon("WindowHalfsAndThirds")
+hs.loadSpoon("KSheet")
+hs.loadSpoon("Seal")
+hs.loadSpoon("SpoonInstall")
+
+Install=spoon.SpoonInstall
+
+local hyper = {'ctrl', 'cmd'}
+
 local alert = require 'hs.alert'
+local application = require 'hs.application'
+local geometry = require 'hs.geometry'
+local grid = require 'hs.grid'
+local hints = require 'hs.hints'
+local hotkey = require 'hs.hotkey'
+local layout = require 'hs.layout'
+local window = require 'hs.window'
+local speech = require 'hs.speech'
 
 import = require('utils/import')
 import.clear_cache()
@@ -196,7 +215,7 @@ hs.loadSpoon('ControlEscape'):start()
 
 
 local function  ctrlBinding(oldKey, newKey)
-    return hs.hotkey.new({'ctrl'}, oldKey, nil ,function()
+    return hs.hotkey.new({'rightcmd'}, oldKey, nil ,function()
         hs.eventtap.keyStroke({}, newKey, 1000)
     end)
 end
@@ -223,24 +242,178 @@ local function disableCtrlBindings()
   end
 end
 
-local wf = hs.window.filter
--- hs.window.filter.new{'Google Chrome', '微信'}:getWindows()[2]
--- local hjklBindingApps = wf.new{"Google Chrome", "微信", "钉钉"}
-local hjklBindingApps = wf.new{"Google Chrome", "微信", "访达"}
-hjklBindingApps:subscribe(wf.windowFocused, function()
-  enableCtrlBindings()
-end):subscribe(wf.windowUnfocused, function()
-  disableCtrlBindings()
+
+-- local wf = hs.window.filter
+-- -- hs.window.filter.new{'Google Chrome', '微信'}:getWindows()[2]
+-- -- local hjklBindingApps = wf.new{"Google Chrome", "微信", "钉钉"}
+-- local hjklBindingApps = wf.new{"Google Chrome", "微信", "访达"}
+-- hjklBindingApps:subscribe(wf.windowFocused, function()
+--   enableCtrlBindings()
+-- end):subscribe(wf.windowUnfocused, function()
+--   disableCtrlBindings()
+-- end)
+
+local ctrlBindingFlag = true
+hs.hotkey.bind({'rightcmd'}, '`', nil, function()
+    if ctrlBindingFlag then
+        ctrlBindingFlag = false
+        enableCtrlBindings()
+        alert.show("enable hjkl mode")
+    else
+        ctrlBindingFlag = true
+        disableCtrlBindings()
+        alert.show("disable hjkl mode")
+    end
 end)
 
--- local ctrlBindingFlag = true
--- hs.hotkey.bind({'ctrl'}, 'f12', nil, function()
---     alert.show(ctrlBindingFlag)
---     if ctrlBindingFlag then
---         ctrlBindingFlag = false
---         enableCtrlBindings()
---     else
---         ctrlBindingFlag = true
---         disableCtrlBindings()
---     end
--- end)
+hs.window.animationDuration = 0 -- don't waste time on animation when resize window
+
+
+switcher = hs.window.switcher.new(
+    hs.window.filter.new()
+        :setAppFilter('Emacs', {allowRoles = '*', allowTitles = 1}), -- make emacs window show in switcher list
+    {
+        showTitles = false,               -- don't show window title
+        thumbnailSize = 200,              -- window thumbnail size
+        showSelectedThumbnail = false,    -- don't show bigger thumbnail
+        backgroundColor = {0, 0, 0, 0.8}, -- background color
+        highlightColor = {0.3, 0.3, 0.3, 0.8}, -- selected color
+    }
+)
+
+hs.hotkey.bind("alt", "tab", function()
+       switcher:next()
+end)
+hs.hotkey.bind("alt-shift", "tab", function()
+                   switcher:previous()
+                   updateFocusAppInputMethod()
+end)
+
+function findApplication(appPath)
+    local apps = application.runningApplications()
+    for i = 1, #apps do
+        local app = apps[i]
+        if app:path() == appPath then
+            return app
+        end
+    end
+
+    return nil
+end
+
+
+local key2App = {
+    e = {'/Applications/iTerm.app'},
+    m = {'/Applications/Emacs.app'},
+    c = {'/Applications/Google Chrome.app'},
+    w = {'/Applications/WeChat.app'},
+    -- d = {'/Applications/Dash.app', 'English', 1},
+    d = {'/Applications/DingTalk.app'},
+    x = {'/Applications/网易有道词典.app'},
+}
+
+-- Toggle an application between being the frontmost app, and being hidden
+function toggleApplication(app)
+    local appPath = app[1]
+    local app = findApplication(appPath)
+
+    if not app then
+        -- Application not running, launch app
+        application.launchOrFocus(appPath)
+    else
+        -- Application running, toggle hide/unhide
+        local mainwin = app:mainWindow()
+        if mainwin and not app:isFrontmost() then
+                -- Focus target application if it not at frontmost.
+                mainwin:application():activate(true)
+                mainwin:application():unhide()
+                mainwin:focus()
+        else
+            -- Start application if application is hide.
+            if app:isFrontmost() then
+                app:hide()
+            end
+        end
+    end
+
+end
+
+for key, app in pairs(key2App) do
+    hotkey.bind(
+        hyper, key,
+        function()
+            toggleApplication(app)
+    end)
+end
+
+
+Install:andUse(
+    "WindowHalfsAndThirds",
+    {
+        config = {use_frame_correctness = true},
+        hotkeys = {max_toggle = {hyper, "="}}
+})
+
+
+
+-- Power operation.
+caffeinateOnIcon = [[ASCII:
+.....1a..........AC..........E
+..............................
+......4.......................
+1..........aA..........CE.....
+e.2......4.3...........h......
+..............................
+..............................
+.......................h......
+e.2......6.3..........t..q....
+5..........c..........s.......
+......6..................q....
+......................s..t....
+.....5c.......................
+]]
+
+    caffeinateOffIcon = [[ASCII:
+.....1a.....x....AC.y.......zE
+..............................
+......4.......................
+1..........aA..........CE.....
+e.2......4.3...........h......
+..............................
+..............................
+.......................h......
+e.2......6.3..........t..q....
+5..........c..........s.......
+......6..................q....
+......................s..t....
+...x.5c....y.......z..........
+]]
+
+local caffeinateTrayIcon = hs.menubar.new()
+
+local function caffeinateSetIcon(state)
+    caffeinateTrayIcon:setIcon(state and caffeinateOnIcon or caffeinateOffIcon)
+
+    if state then
+        caffeinateTrayIcon:setTooltip("Sleep never sleep")
+    else
+        caffeinateTrayIcon:setTooltip("System will sleep when idle")
+    end
+end
+
+local function toggleCaffeinate()
+    local sleepStatus = hs.caffeinate.toggle("displayIdle")
+    if sleepStatus then
+        hs.notify.new({title="HammerSpoon", informativeText="System never sleep"}):send()
+    else
+        hs.notify.new({title="HammerSpoon", informativeText="System will sleep when idle"}):send()
+    end
+
+    caffeinateSetIcon(sleepStatus)
+end
+
+hs.hotkey.bind(hyper, "-", toggleCaffeinate)
+caffeinateTrayIcon:setClickCallback(toggleCaffeinate)
+caffeinateSetIcon(sleepStatus)
+
+

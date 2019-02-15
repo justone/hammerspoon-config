@@ -1,12 +1,12 @@
 hammerspoon-config
 ==================
 
-A more modular and config for [Hammerspoon](http://www.hammerspoon.org/) based on https://github.com/jhgg/Hydra-Config.
+my config for [Hammerspoon](http://www.hammerspoon.org/)
 
 #### Installing
 
 ```
-git clone git@github.com:tstirrat/hammerspoon-config.git ~/.hammerspoon
+git clone git@github.com:jiahut/hammerspoon-config.git ~/.hammerspoon
 
 cd ~/.hammerspoon
 cp config.example.lua config.lua
@@ -41,27 +41,10 @@ cp config.example.lua config.lua
 * `modules/slide.lua` - Handles nudging windows via `utils/nudge.lua`. (CMD-CTRL-ALT-<Arrow>) Thanks @josheschulz.
 * `modules/hop.lua` - Handles focusing windows in relative directions. (CMD-CTRL-ALT-SHIFT-<Arrow>) Thanks @josheschulz.
 
+###  Spoons
+
+* `Spoons/ControlEscape` - Tap it for <kbd>escape</kbd>. Hold it for <kbd>control</kbd>.
 
 ### License
 
 > Released under MIT license.
->
-> Copyright (c) 2014 Jacob Heinz
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
