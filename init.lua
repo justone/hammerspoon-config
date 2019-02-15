@@ -19,6 +19,8 @@ local layout = require 'hs.layout'
 local window = require 'hs.window'
 local speech = require 'hs.speech'
 
+hs.window.animationDuration = 0 -- don't waste time on animation when resize window
+
 import = require('utils/import')
 import.clear_cache()
 
@@ -265,8 +267,6 @@ hs.hotkey.bind({'rightcmd'}, '`', nil, function()
         alert.show("disable hjkl mode")
     end
 end)
-
-hs.window.animationDuration = 0 -- don't waste time on animation when resize window
 
 
 switcher = hs.window.switcher.new(
