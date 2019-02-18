@@ -308,7 +308,8 @@ local key2App = {
     c = {'/Applications/Google Chrome.app'},
     w = {'/Applications/WeChat.app'},
     -- d = {'/Applications/Dash.app', 'English', 1},
-    d = {'/Applications/DingTalk.app'},
+    --  ctrl+cmd+d lookup dictionary with mouse pointer
+    s = {'/Applications/DingTalk.app'},
     x = {'/Applications/网易有道词典.app'},
 }
 
