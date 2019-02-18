@@ -322,18 +322,14 @@ function toggleApplication(app)
         -- Application not running, launch app
         application.launchOrFocus(appPath)
     else
-        -- Application running, toggle hide/unhide
-        local mainwin = app:mainWindow()
-        if mainwin and not app:isFrontmost() then
-                -- Focus target application if it not at frontmost.
-                mainwin:application():activate(true)
-                mainwin:application():unhide()
-                mainwin:focus()
+        if app:isFrontmost() then
+            app:hide()
         else
-            -- Start application if application is hide.
-            if app:isFrontmost() then
-                app:hide()
-            end
+            -- Focus target application if it not at frontmost.
+            -- app:unhide()
+            -- app:activate(true)
+            application.open(app:bundleID())
+            app:mainWindow():focus()
         end
     end
 
