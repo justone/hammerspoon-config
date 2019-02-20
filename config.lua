@@ -70,7 +70,7 @@ config.launcher = {
    }
 }
 
--- System -> keyboard -> shortcut -> ^M3
+-- System -> keyboard -> shortcut -> ctrl+mac+3 then mac+c
 -- hs.hotkey.bind(mash_keys, "A", nil,  function()
 --     hs.application.launchOrFocus("screenshot")
 -- end)
