@@ -307,6 +307,7 @@ local key2App = {
     m = {'/Applications/Emacs.app'},
     c = {'/Applications/Google Chrome.app'},
     w = {'/Applications/WeChat.app'},
+    f = {"/System/Library/CoreServices/Finder.app" },
     -- d = {'/Applications/Dash.app', 'English', 1},
     --  ctrl+cmd+d lookup dictionary with mouse pointer
     s = {'/Applications/DingTalk.app'},

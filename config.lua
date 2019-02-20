@@ -70,9 +70,10 @@ config.launcher = {
    }
 }
 
-hs.hotkey.bind(mash_keys, "A", nil,  function()
-    hs.application.launchOrFocus("screenshot")
-end)
+-- System -> keyboard -> shortcut -> ^M3
+-- hs.hotkey.bind(mash_keys, "A", nil,  function()
+--     hs.application.launchOrFocus("screenshot")
+-- end)
 
 -- Window arrangements.
 config.arrangements = {
