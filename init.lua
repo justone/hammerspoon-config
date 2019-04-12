@@ -415,4 +415,8 @@ hs.hotkey.bind(hyper, "-", toggleCaffeinate)
 caffeinateTrayIcon:setClickCallback(toggleCaffeinate)
 caffeinateSetIcon(sleepStatus)
 
-
+-- https://github.com/sindresorhus/do-not-disturb-cli
+local function toggleDndMode()
+    hs.execute("/usr/local/opt/node@8/bin/node /usr/local/bin/dnd toggle")
+end
+hs.hotkey.bind(hyper, "`", toggleDndMode)
