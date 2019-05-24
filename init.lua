@@ -222,11 +222,21 @@ local function  ctrlBinding(oldKey, newKey)
     end)
 end
 
+local function reBindingKey(oldKey, newKey)
+    return hs.hotkey.new(nil,  oldKey, nil ,function()
+        hs.eventtap.keyStroke({}, newKey, 1000)
+    end)
+end
+
 local hjklBindings = {
-    ctrlBinding('h', 'left'),
-    ctrlBinding('j', 'down'),
-    ctrlBinding('k', 'up'),
-    ctrlBinding('l', 'right')
+    -- ctrlBinding('h', 'left'),
+    -- ctrlBinding('j', 'down'),
+    -- ctrlBinding('k', 'up'),
+    -- ctrlBinding('l', 'right')
+    reBindingKey(';', 'left'),
+    reBindingKey('\'', 'right'),
+    reBindingKey('[', 'up'),
+    reBindingKey('/', 'down')
 }
 
 
