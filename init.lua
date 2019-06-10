@@ -421,7 +421,7 @@ local function toggleCaffeinate()
     caffeinateSetIcon(sleepStatus)
 end
 
-hs.hotkey.bind(hyper, "-", toggleCaffeinate)
+hs.hotkey.bind(hyper, "\\", toggleCaffeinate)
 caffeinateTrayIcon:setClickCallback(toggleCaffeinate)
 caffeinateSetIcon(sleepStatus)
 
@@ -430,3 +430,41 @@ local function toggleDndMode()
     hs.execute("/usr/local/opt/node@8/bin/node /usr/local/bin/dnd toggle")
 end
 hs.hotkey.bind(hyper, "`", toggleDndMode)
+
+
+-- volume manager
+function getVolumeIncrement()
+  local volume = hs.audiodevice.current().volume
+  -- When the volume gets near zero, change it in smaller increments. Otherwise even the first increment
+  -- above zero may be too loud.
+  -- NOTE(phil): I noticed that using a decimal smaller than 0.4 will sometimes result in the volume remaining
+  -- unchanged after calling setVolume, as if OSX only lets you change the volume by large increments.
+  if volume < 40 then return 5 else return 10 end
+end
+
+hs.hotkey.bind(hyper, "9", function()
+  local except = hs.audiodevice.current().volume + getVolumeIncrement()
+  except = math.floor(except + 0.5)
+  if except > 100  then
+      except = 100
+  end
+  alert.show("set volume: " .. except)
+  hs.audiodevice.defaultOutputDevice():setVolume(except)
+end)
+
+hs.hotkey.bind(hyper, "8", function()
+  local except = hs.audiodevice.current().volume - getVolumeIncrement()
+  except = math.floor(except + 0.5)
+  if except < 0  then
+      except = 0
+  end
+  alert.show("set volume: " .. except)
+  hs.audiodevice.defaultOutputDevice():setVolume(except)
+end)
+
+
+hs.hotkey.bind(hyper, "0", function()
+  local muted  =  hs.audiodevice.defaultOutputDevice():muted()
+  alert.show("set muted : " .. tostring(not muted))
+  hs.audiodevice.defaultOutputDevice():setMuted(not muted)
+end)
