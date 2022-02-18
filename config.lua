@@ -37,8 +37,9 @@ config.launcher = {
         { key = "C", application = "Slack" },
         { key = "B", application = "Google Chrome" },
         { key = "E", application = "MacVim" },
-        { key = "M", application = "OWA" },
-        { key = "W", application = "Video" },
+        { key = "R", application = "Brave Browser" },
+        { key = "M", application = "Microsoft Outlook" },
+        { key = "W", application = "zoom.us" },
         { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
         { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
         { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" }
