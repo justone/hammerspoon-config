@@ -35,8 +35,10 @@ config.launcher = {
     bindings = {
         { key = "T", application = "Terminal" },
         { key = "C", application = "Slack" },
-        { key = "B", application = "Google Chrome" },
-        { key = "E", application = "MacVim" },
+        { key = "G", application = "Google Chrome" },
+        { key = "E", application = "Logseq" },
+        { key = "V", application = "MacVim" },
+        { key = "X", application = "Todoist" },
         { key = "R", application = "Brave Browser" },
         { key = "M", application = "Microsoft Outlook" },
         { key = "W", application = "zoom.us" },
