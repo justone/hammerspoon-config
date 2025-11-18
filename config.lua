@@ -12,47 +12,47 @@ config.modules = {
     "reload",
     "arrows",
     "lock",
-    "fullscreen"
+    "fullscreen",
 }
 
-mash_keys = {"cmd", "ctrl"}
+mash_keys = { "cmd", "ctrl" }
 
 -- Maps monitor id -> screen index.
 config.fullscreen = {
     mash = mash_keys,
-    key = "Z"
+    key = "Z",
 }
 
 -- Maps monitor id -> screen index.
 config.monitors = {
     autodiscover = true,
-    rows = 1
+    rows = 1,
 }
 
 -- Launch applications
 config.launcher = {
     mash = mash_keys,
     bindings = {
-        { key = "T", application = "Terminal" },
-        { key = "C", application = "Slack" },
-        { key = "G", application = "Google Chrome" },
-        { key = "E", application = "Logseq" },
-        { key = "V", application = "MacVim" },
-        { key = "X", application = "Todoist" },
-        { key = "R", application = "Brave Browser" },
-        { key = "M", application = "Microsoft Outlook" },
-        { key = "W", application = "zoom.us" },
-        { key = "S", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --red" },
-        { key = "D", command     = "/Users/" .. os.getenv('USER') .. "/bin/excluded/blink1-tool --green" },
-        { key = "F19", command   = "/Users/" .. os.getenv('USER') .. "/bin/blink1-panic" }
-    }
+        { key = "T",   application = "Terminal" },
+        { key = "C",   application = "Slack" },
+        { key = "G",   application = "Google Chrome" },
+        { key = "E",   application = "Logseq" },
+        { key = "V",   application = "MacVim" },
+        { key = "X",   application = "Todoist" },
+        { key = "R",   application = "Brave Browser" },
+        { key = "M",   application = "Microsoft Outlook" },
+        { key = "W",   application = "zoom.us" },
+        { key = "S",   command = "/Users/" .. os.getenv("USER") .. "/bin/excluded/blink1-tool --red" },
+        { key = "D",   command = "/Users/" .. os.getenv("USER") .. "/bin/excluded/blink1-tool --green" },
+        { key = "F19", command = "/Users/" .. os.getenv("USER") .. "/bin/blink1-panic" },
+    },
 }
 
 -- Window arrangements.
 config.arrangements = {
     fuzzy_search = {
-        mash = {"cmd", "ctrl", "alt"},
-        key = "Z"
+        mash = { "cmd", "ctrl", "alt" },
+        key = "Z",
     },
     {
         name = "zen",
@@ -68,34 +68,34 @@ config.arrangements = {
             {
                 app_title = "^Slack",
                 monitor = 4,
-                position = "left"
+                position = "left",
             },
             {
                 app_title = "^Messages",
                 monitor = 4,
                 position = function(d)
-                    return d:translate_from('bottom_right', {
+                    return d:translate_from("bottom_right", {
                         y = 42,
-                        h = -40
+                        h = -40,
                     })
-                end
+                end,
             },
             {
                 app_title = "^ChronoMate",
                 monitor = 4,
                 position = function(d)
-                    return d:translate_from('top_right', {
-                        h = 42
+                    return d:translate_from("top_right", {
+                        h = 42,
                     })
-                end
+                end,
             },
             {
                 app_title = "^Spotify",
                 monitor = 6,
                 position = "full_screen",
-            }
-        }
-    }
+            },
+        },
+    },
 }
 
 return config
